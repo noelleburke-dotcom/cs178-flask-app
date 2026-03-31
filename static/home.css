@@ -1,7 +1,7 @@
 h1{
     color:hsl(328, 100%, 54%);
     font-size: 90px;
-
+    text-align: center;
 }
 
 
@@ -16,5 +16,4 @@ h1{
     border-radius: 12px;
     font-weight: bold;
     font-size: 18px;
-
 }

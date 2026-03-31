@@ -137,3 +137,4 @@ The JOIN query used in this project: <!-- describe it in plain English -->
 
 <!-- List any AI tools you used (e.g., ChatGPT) and briefly describe what you used them for. Per course policy, AI use is allowed but must be cited in code comments and noted here. -->
 https://chatgpt.com/c/69cbfb6d-7adc-8328-8b73-979dfc665d34 this conversation was a how to on setting up my database
+https://chatgpt.com/c/69cc0a16-c9fc-8330-b266-8df707dd8afd used to troubleshoot and style the app
