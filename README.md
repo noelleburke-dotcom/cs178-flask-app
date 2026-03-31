@@ -7,8 +7,8 @@
 ---
 
 ## Overview
+This project is for music lovers! In this app you can keep track of your favorite songs. A feature of this app is it will keep track of data like the amount of songs by a certain artist and the length of the playlist.
 
-<!-- Describe your project in 2-4 sentences. What does it do? Who is it for? What problem does it solve? -->
 
 ---
 
