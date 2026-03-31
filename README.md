@@ -1,8 +1,8 @@
-# [Your Project Name Here]
+# Personal Playlist
 
 **CS178: Cloud and Database Systems — Project #1**
-**Author:** [Your Name]
-**GitHub:** [your-username]
+**Author:** Noelle Burke
+**GitHub:** noelleburke-dotcom
 
 ---
 
