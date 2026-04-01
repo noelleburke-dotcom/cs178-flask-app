@@ -2,7 +2,7 @@ body{
     background-color: lightblue;
 }
 
-.btn{
+.submit-button{
     display:block;
     width:250px;
     padding: 15px 30px;         
@@ -12,11 +12,16 @@ body{
     background-color: plum;  
     border-radius: 12px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 h1{
     color:hsl(328, 100%, 54%);
     font-size: 90px;
     text-align: center;
+}
+
+.Name{
+    color:hsl(328, 100%, 54%);  
+    font-size: 18px;
 }
