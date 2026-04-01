@@ -24,7 +24,7 @@ h1{
 .Name{
     color:hsl(328, 100%, 54%);  
     font-size: 20px;
-    text-align: center;
+    display: block;
 }
 
 .textbox{
