@@ -1,0 +1,37 @@
+body{
+    background-color: lightblue;
+}
+
+.submit-button{
+    display:block;
+    width:250px;
+    padding: 15px 30px;         
+    margin: 10px auto;          
+    text-decoration: none;      
+    color: white;
+    background-color: plum;  
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+h1{
+    color:hsl(328, 100%, 54%);
+    font-size: 90px;
+    text-align: center;
+}
+
+.Name{
+    color:hsl(328, 100%, 54%);  
+    font-size: 40px;
+    display: block;
+    text-align: center;
+}
+
+.textbox{
+    display: block;        
+    margin: 50px auto;    
+    width: 400px;          
+    height: 50px;  
+    font-size: 18px;
+}
