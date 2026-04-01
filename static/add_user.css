@@ -1,0 +1,22 @@
+body{
+    background-color: lightblue;
+}
+
+.btn{
+    display:block;
+    width:250px;
+    padding: 15px 30px;         
+    margin: 10px auto;          
+    text-decoration: none;      
+    color: white;
+    background-color: plum;  
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+h1{
+    color:hsl(328, 100%, 54%);
+    font-size: 90px;
+    text-align: center;
+}
