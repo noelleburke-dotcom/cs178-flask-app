@@ -12,7 +12,7 @@ body{
     background-color: plum;  
     border-radius: 12px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 h1{
@@ -23,7 +23,8 @@ h1{
 
 .Name{
     color:hsl(328, 100%, 54%);  
-    font-size: 18px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .textbox{
