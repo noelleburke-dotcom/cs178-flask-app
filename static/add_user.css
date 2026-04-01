@@ -25,3 +25,11 @@ h1{
     color:hsl(328, 100%, 54%);  
     font-size: 18px;
 }
+
+.textbox{
+    display: block;        
+    margin: 50px auto;    
+    width: 400px;          
+    height: 50px;  
+    font-size: 18px;
+}
