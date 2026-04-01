@@ -25,6 +25,7 @@ h1{
     color:hsl(328, 100%, 54%);  
     font-size: 20px;
     display: block;
+    text-align: center;
 }
 
 .textbox{
