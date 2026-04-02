@@ -33,20 +33,22 @@ table {
 }
 
 table tbody tr:nth-of-type(odd) {
-    background-color:white; 
-    color: lightblue;
+    background-color:white !important; 
+    color: lightblue !important;
+    text-align: center;
 }
 table tbody tr:nth-of-type(even) {
-   background-color: #f4daf4; 
-   color:white;
+   background-color: #f4daf4 !important; 
+   color:white !important;
 }
+
 .Name{
     color:hsl(328, 100%, 54%);  
     font-size: 30px;
     text-align: center;
 }
 
-td{
+td {
     text-align: center;
     font-size: 22px;
     font-weight: bold;
