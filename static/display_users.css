@@ -17,18 +17,26 @@ body{
 
 h2{
     color:hsl(328, 100%, 54%);
-    font-size: 75px;
+    font-size: 60px;
     text-align: center;
 }
 
 thead {
-    background-color: plum;
-    color: white;
+    background-color: rgb(237, 138, 237);
+    color: lightblue;
+    text-align: center;
+    font-size: 30px;
+}
+
+table {
+    margin: 0 auto;
+    width: 50%;
+    border-collapse: collapse;
 }
 
 table tbody tr:nth-of-type(odd) {
-    background-color: plum; 
-    color: white;
+    background-color: rgb(237, 138, 237); 
+    color: lightblue;
 }
 table tbody tr:nth-of-type(even) {
    background-color: #f4daf4; 

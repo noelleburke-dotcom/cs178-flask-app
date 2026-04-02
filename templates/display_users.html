@@ -9,17 +9,17 @@
 <body>
     <div class="container">
         <h2>Users List</h2>
-        <table class="table table-bordered table-striped mt-1">
+        <table class="table table-bordered table-striped mt-3">
                 <tr>
-                    <th class="Name">name</th>
+                    <th class="Name">Name</th>
                 </tr>
             </thead>
             <tbody> <!-- table body -- loop through all of the users -->
                 {% for user in users %}
                 <tr>
                     <td>{{ user[0] }}</td>
-                    <td>{{ user[1] }}</td>
-                    <td>{{ user[2] }}</td>
+                    <!-- <td>{{ user[1] }}</td>
+                    <td>{{ user[2] }}</td>  -->
                 </tr>
                 {% endfor %}
             </tbody>
