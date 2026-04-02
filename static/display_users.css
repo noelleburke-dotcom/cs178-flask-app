@@ -23,7 +23,7 @@ h2{
 
 thead {
     background-color: rgb(237, 138, 237);
-    color: lightblue;
+    color: hsl(0, 0%, 100%);
     text-align: center;
     font-size: 30px;
 }
@@ -35,7 +35,7 @@ table {
 }
 
 table tbody tr:nth-of-type(odd) {
-    background-color: rgb(237, 138, 237); 
+    background-color:white; 
     color: lightblue;
 }
 table tbody tr:nth-of-type(even) {
@@ -44,7 +44,7 @@ table tbody tr:nth-of-type(even) {
 }
 .Name{
     color:hsl(328, 100%, 54%);  
-    font-size: 40px;
+    font-size: 30px;
     display: block;
     text-align: center;
 }
