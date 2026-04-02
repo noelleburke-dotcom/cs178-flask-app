@@ -22,8 +22,8 @@ h2{
 }
 
 thead {
-    background-color: rgb(237, 138, 237) !important;
-    color: hsl(0, 0%, 100%);
+    background-color:#f4daf4!important;
+    color: white !important;
 }
 
 table {
