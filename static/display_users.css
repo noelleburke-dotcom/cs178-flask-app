@@ -24,8 +24,6 @@ h2{
 thead {
     background-color: rgb(237, 138, 237);
     color: hsl(0, 0%, 100%);
-    text-align: center;
-    font-size: 30px;
 }
 
 table {
@@ -45,8 +43,13 @@ table tbody tr:nth-of-type(even) {
 .Name{
     color:hsl(328, 100%, 54%);  
     font-size: 30px;
-    display: block;
     text-align: center;
+}
+
+td{
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 /*.textbox{
