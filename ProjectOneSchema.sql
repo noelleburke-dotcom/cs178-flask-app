@@ -1,7 +1,8 @@
 -- ----------------------
 -- TABLES
 -- ----------------------
-
+-- from chat gpt 
+--data provided by me :3 for a practice table
 CREATE TABLE User (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100)
