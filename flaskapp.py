@@ -1,6 +1,7 @@
 # author: T. Urness and M. Moore
 # description: Flask example using redirect, url_for, and flash
 # credit: the template html files were constructed with the help of ChatGPT
+#add and delete made with help from chatgpt template-> add or delete to/from database
 
 from flask import Flask
 from flask import render_template
@@ -18,12 +19,13 @@ def home():
 @app.route('/add-user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
-        # Extract form data
+        # Extract form data 
+        cursor= connection.cursor()
         name = request.form['name']
-
-        
-        # Process the data (e.g., add it to a database)
-        # For now, let's just print it to the console
+        sql="INSERT INTO USERS (name) VALUES(%s)"
+        cursor.execute(sql,(name,))
+        connection.commit()
+        cursor.close()
         print("Name:", name)
         return redirect(url_for('home'))
     else:
@@ -34,10 +36,12 @@ def add_user():
 def delete_user():
     if request.method == 'POST':
         # Extract form data
+        cursor= connection.cursor()
         name = request.form['name']
-        
-        # Process the data (e.g., add it to a database)
-        # For now, let's just print it to the console
+        sql="DELETE FROM Users WHERE user_id = %s"
+        cursor.execute(sql,(user_id,))
+        connection.commit
+        cursor.close()
         print("Name to delete:", name)
         
         flash('User deleted successfully! Hoorah!', 'warning') 
