@@ -17,7 +17,9 @@
             <tbody> <!-- table body -- loop through all of the users -->
                 {% for user in users %}
                 <tr>
-                    <td>{{ user[0] }}</td>
+                    <a href="{{ user[1] }}" >
+                        {{user[0]}}
+                        </a>
                     <!-- <td>{{ user[1] }}</td>
                     <td>{{ user[2] }}</td>  -->
                 </tr>

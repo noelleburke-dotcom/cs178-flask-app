@@ -58,7 +58,7 @@ def display_users():
     users_list = (('John','Doe','Comedy'),('Jane', 'Doe','Drama'))
     return render_template('display_users.html', users = users_list)
 
-@app.route('user/<user_id>')
+@app.route('/user/<user_id>')
 def update_user(user_id):
     rows= execute_query("""
         SELECT Track.Name
@@ -67,7 +67,7 @@ def update_user(user_id):
         JOIN Track USING (TrackId)
         WHERE Playlist.UserId = %s
         """, (user_id,))
-    return render_template('update_users.html' tracks=rows)
+    return render_template('update_users.html', tracks=rows)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
