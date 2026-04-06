@@ -25,9 +25,6 @@ def add_user():
         # Process the data (e.g., add it to a database)
         # For now, let's just print it to the console
         print("Name:", name)
-        
-        flash('User added successfully! ', 'success')  # 'success' is a category; makes a green banner at the top
-        # Redirect to home page or another page upon successful submission
         return redirect(url_for('home'))
     else:
         # Render the form page if the request method is GET
