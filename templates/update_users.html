@@ -1,4 +1,29 @@
-      <link rel="stylesheet" href="{{ url_for('static', filename='update_user.css') }}">
-          <h1>Update User</h1>
-    <form action="{{ url_for('update_user') }}" method="post">
-      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Users List</title>
+    <!-- Bootstrap CSS for styling the table -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='update_users.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Users List</h2>
+        <table class="table table-bordered table-striped mt-3">
+                <tr>
+                    <th class="Name">Name</th>
+                </tr>
+            </thead>
+            <tbody> <!-- table body -- loop through all of the users -->
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <!-- <td>{{ user[1] }}</td>
+                    <td>{{ user[2] }}</td>  -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+ </body>
+</html>

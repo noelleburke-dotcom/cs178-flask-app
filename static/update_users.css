@@ -2,7 +2,7 @@ body{
     background-color: lightblue;
 }
 
-.submit-button{
+/*.submit-button{
     display:block;
     width:250px;
     padding: 15px 30px;         
@@ -13,25 +13,52 @@ body{
     border-radius: 12px;
     font-weight: bold;
     font-size: 20px;
+}*/
+
+h2{
+    color:hsl(328, 100%, 54%);
+    font-size: 60px;
+    text-align: center;
 }
 
-h1{
-    color:hsl(328, 100%, 54%);
-    font-size: 90px;
+thead {
+    background-color:#f4daf4!important;
+    color: white !important;
+}
+
+table {
+    margin: 0 auto;
+    width: 50%;
+    border-collapse: collapse;
+}
+
+table tbody tr:nth-of-type(odd) {
+    background-color:white !important; 
+    color: lightblue !important;
     text-align: center;
+}
+table tbody tr:nth-of-type(even) {
+   background-color: #f4daf4 !important; 
+   color:white !important;
 }
 
 .Name{
     color:hsl(328, 100%, 54%);  
-    font-size: 40px;
-    display: block;
+    font-size: 45px;
     text-align: center;
+    background-color: #f4daf4 !important;
 }
 
-.textbox{
+td {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/*.textbox{
     display: block;        
     margin: 50px auto;    
     width: 400px;          
     height: 50px;  
     font-size: 18px;
-}
+}*/
