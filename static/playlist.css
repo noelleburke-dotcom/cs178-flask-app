@@ -1,0 +1,64 @@
+body{
+    background-color: lightblue;
+}
+
+/*.submit-button{
+    display:block;
+    width:250px;
+    padding: 15px 30px;         
+    margin: 10px auto;          
+    text-decoration: none;      
+    color: white;
+    background-color: plum;  
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 20px;
+}*/
+
+h2{
+    color:hsl(328, 100%, 54%);
+    font-size: 60px;
+    text-align: center;
+}
+
+thead {
+    background-color:#f4daf4!important;
+    color: white !important;
+}
+
+table {
+    margin: 0 auto;
+    width: 50%;
+    border-collapse: collapse;
+}
+
+table tbody tr:nth-of-type(odd) {
+    background-color:white !important; 
+    color: lightblue !important;
+    text-align: center;
+}
+table tbody tr:nth-of-type(even) {
+   background-color: #f4daf4 !important; 
+   color:white !important;
+}
+
+.Name{
+    color:hsl(328, 100%, 54%);  
+    font-size: 45px;
+    text-align: center;
+    background-color: #f4daf4 !important;
+}
+
+td {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/*.textbox{
+    display: block;        
+    margin: 50px auto;    
+    width: 400px;          
+    height: 50px;  
+    font-size: 18px;
+}*/

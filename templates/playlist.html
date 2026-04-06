@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Users List</title>
+    <!-- Bootstrap CSS for styling the table -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='playlist.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>{{ username }}'s Playlist</h2>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Track Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for track in tracks %}
+            <tr>
+                <td>{{ track[0] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+            </tbody>
+        </table>
+    </div>
+ </body>
+</html>
