@@ -1,8 +1,4 @@
--- ----------------------
--- TABLES
--- ----------------------
--- from chat gpt 
---data provided by me :3 for a practice table
+
 CREATE TABLE User (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100)
@@ -36,22 +32,18 @@ CREATE TABLE PlaylistSong (
     FOREIGN KEY (song_id) REFERENCES Song(song_id)
 );
 
--- ----------------------
--- DATA
--- ----------------------
 
--- Users
 INSERT INTO User (name) VALUES ('Noelle');
 
--- Playlist for user_id = 1
+
 INSERT INTO Playlist (user_id) VALUES (1);
 
--- Artists
+
 INSERT INTO Artist (name) VALUES
 ('IVE'), ('ITZY'), ('ILLIT'), ('aespa'),
 ('Stray Kids'), ('NMIXX'), ('KiiKii'), ('Twice');
 
--- Songs
+
 INSERT INTO Song (title, length_seconds, artist_id)
 SELECT 'In Your Heart', 123, artist_id FROM Artist WHERE name='IVE'
 UNION ALL
@@ -81,7 +73,7 @@ SELECT 'My Pace', 190, artist_id FROM Artist WHERE name='Stray Kids'
 UNION ALL
 SELECT 'I Can''t Stop Me', 205, artist_id FROM Artist WHERE name='Twice';
 
--- Link songs to playlist (playlist_id = 1)
+
 INSERT INTO PlaylistSong (playlist_id, song_id, position)
 SELECT 1, song_id, 1 FROM Song WHERE title='In Your Heart'
 UNION ALL
