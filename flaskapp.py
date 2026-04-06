@@ -57,13 +57,13 @@ def display_users():
 
 @app.route('/user/<user_id>')
 def update_user(user_id):
-    rows= execute_query("""
-        SELECT Track.Name
-        FROM Playlist
-        JOIN PlaylistTrack USING (PlaylistId)
-        JOIN Track USING (TrackId)
-        WHERE Playlist.UserId = %s
-        """, (user_id,))
+    rows = execute_query("""
+    SELECT Track.Name
+    FROM Playlist
+    JOIN PlaylistTrack USING (PlaylistId)
+    JOIN Track USING (TrackId)
+    WHERE Playlist.UserId = %s
+""", (user_id,))
     return render_template('update_users.html', tracks=rows)
 
 # these two lines of code should always be the last in the file
