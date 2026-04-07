@@ -31,7 +31,7 @@ CREATE TABLE PlaylistSong (
     FOREIGN KEY (song_id) REFERENCES Song(song_id)
 );
 
-
+-- practice data
 INSERT INTO User (name) VALUES ('Noelle');
 
 
