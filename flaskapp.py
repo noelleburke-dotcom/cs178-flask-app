@@ -18,13 +18,14 @@ def home():
 def add_user():
     if request.method == 'POST':
         # Extract form data 
-        cursor= get_conn.cursor()
+        conn= get_conn()
+        cursor= conn.cursor()
         name = request.form['name']
         sql="INSERT INTO USERS (name) VALUES(%s)"
         cursor.execute(sql,(name,))
-        get_conn.commit()
+        conn.commit()
         cursor.close()
-        get_conn.close()
+        conn.close()
         print("Name added:", name)
         return redirect(url_for('home'))
     else:
@@ -35,13 +36,14 @@ def add_user():
 def delete_user():
     if request.method == 'POST':
         # Extract form data
-        cursor= get_conn.cursor()
+        conn= get_conn()
+        cursor= conn.cursor()
         name = request.form['name']
         sql="DELETE FROM Users WHERE user_id = %s"
         cursor.execute(sql,(name))
-        get_conn.commit
+        conn.commit
         cursor.close()
-        get_conn.close()
+        conn.close()
         
         flash('User deleted successfully!') 
         return redirect(url_for('home'))
