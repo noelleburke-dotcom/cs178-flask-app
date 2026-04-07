@@ -39,9 +39,9 @@ def delete_user():
         conn= get_conn()
         cursor= conn.cursor()
         name = request.form['name']
-        sql="DELETE FROM Users WHERE user_id = %s"
+        sql="DELETE FROM Users WHERE name = %s"
         cursor.execute(sql,(name))
-        conn.commit
+        conn.commit()
         cursor.close()
         conn.close()
         
