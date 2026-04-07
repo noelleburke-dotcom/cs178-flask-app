@@ -20,7 +20,7 @@ def add_user():
         conn= get_conn()
         cursor= conn.cursor()
         name = request.form['name']
-        sql="INSERT INTO USERS (name) VALUES(%s)"
+        sql="INSERT INTO Users (name) VALUES(%s)"
         cursor.execute(sql,(name,))
         conn.commit()
         cursor.close()
@@ -52,14 +52,14 @@ def delete_user():
 
 @app.route('/display-users')
 def display_users():
-    rows = execute_query("SELECT user_id, name FROM `User`;")
+    rows = execute_query("SELECT user_id, name FROM `Users`;")
     users_list = [{'user_id': row[0], 'name': row[1]} for row in rows]
     return render_template('display_users.html', users=users_list)
 
 
 @app.route('/update-user/<int:user_id>')
 def update_user(user_id):
-    rows = execute_query("SELECT user_id, name FROM User WHERE user_id = %s", (user_id,))
+    rows = execute_query("SELECT user_id, name FROM Users WHERE user_id = %s", (user_id,))
     if not rows:
         return "User not found", 404
 
