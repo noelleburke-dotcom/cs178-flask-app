@@ -17,7 +17,6 @@ def home():
 @app.route('/add-user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
-        # Extract form data 
         conn= get_conn()
         cursor= conn.cursor()
         name = request.form['name']
@@ -35,7 +34,6 @@ def add_user():
 @app.route('/delete-user',methods=['GET', 'POST'])
 def delete_user():
     if request.method == 'POST':
-        # Extract form data
         conn= get_conn()
         cursor= conn.cursor()
         name = request.form['name']
