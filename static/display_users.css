@@ -44,7 +44,7 @@ table tbody tr:nth-of-type(odd) {
 }
 table tbody tr:nth-of-type(even) {
    background-color: #f4daf4 !important; 
-   color:#ffffff !important;
+   color: hsl(328, 100%, 54%) !important;
 }
 
 .Name{
