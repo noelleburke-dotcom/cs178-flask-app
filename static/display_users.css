@@ -60,6 +60,11 @@ td {
     font-weight: bold;
 }
 
+td a{
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
 /*.textbox{
     display: block;        
     margin: 50px auto;    
