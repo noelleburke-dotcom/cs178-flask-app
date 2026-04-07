@@ -20,7 +20,7 @@ def add_user():
         conn= get_conn()
         cursor= conn.cursor()
         name = request.form['name']
-        sql="INSERT INTO User (name) VALUES(%s)"
+        sql="INSERT INTO `User` (name) VALUES(%s)"
         cursor.execute(sql,(name,))
         conn.commit()
         cursor.close()
@@ -37,7 +37,7 @@ def delete_user():
         conn= get_conn()
         cursor= conn.cursor()
         name = request.form['name']
-        sql="DELETE FROM User WHERE name = %s"
+        sql="DELETE FROM `User` WHERE name = %s"
         cursor.execute(sql,(name))
         conn.commit()
         cursor.close()
