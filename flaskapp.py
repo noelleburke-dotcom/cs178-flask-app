@@ -55,10 +55,10 @@ def delete_user():
 @app.route('/display-users')
 def display_users():
     rows= execute_query("""
-        SELECT name FROM users;
+        SELECT user_id, name FROM `User`;
         """ )
     users_list = [row[0] if isinstance(row, tuple) else row['name'] for row in rows]
-    return render_template('display_users.html', users=users_list)
+    return render_template('display_users.html', rows=users_list)
 
 
 @app.route('/update-user/<user_id>')
