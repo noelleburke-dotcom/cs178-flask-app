@@ -61,16 +61,14 @@ def display_users():
     return render_template('display_users.html', rows=users_list)
 
 
-@app.route('/update-user/<user_id>')
+@app.route('/update-user/<int:user_id>')
 def update_user(user_id):
-    rows = execute_query("""
-    SELECT Track.Name
-    FROM Playlist
-    JOIN PlaylistTrack USING (PlaylistId)
-    JOIN Track USING (TrackId)
-    WHERE Playlist.UserId = %s
-""", (user_id,))
-    return render_template('update_user.html', tracks=rows)
+    rows = execute_query("SELECT user_id, name FROM User WHERE user_id = %s", (user_id,))
+    if not rows:
+        return "User not found", 404
+
+    user = rows[0]  
+    return render_template('update_user.html', user=user)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
