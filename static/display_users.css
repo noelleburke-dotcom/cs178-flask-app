@@ -21,6 +21,11 @@ h2{
     text-align: center;
 }
 
+th{
+    color:hsl(328, 100%, 54%);
+    font-size: 45px;
+    text-align: center;
+}
 thead {
     background-color:#f4daf4!important;
     color: white !important;
