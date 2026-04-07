@@ -3,10 +3,8 @@
 # credit: the template html files were constructed with the help of ChatGPT
 #add and delete made with help from chatgpt template-> add or delete to/from database
 
-from flask import Flask
-from flask import render_template
-from flask import Flask, render_template, request, redirect, url_for, flash
-from dbCode import *
+from flask import Flask,render_template,request, redirect, url_for, flash
+from dbCode import get_conn, execute_query 
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key' # this is an artifact for using flash displays; 
@@ -20,13 +18,14 @@ def home():
 def add_user():
     if request.method == 'POST':
         # Extract form data 
-        cursor= connection.cursor()
+        cursor= get_conn.cursor()
         name = request.form['name']
         sql="INSERT INTO USERS (name) VALUES(%s)"
         cursor.execute(sql,(name,))
-        connection.commit()
+        get_conn.commit()
         cursor.close()
-        print("Name:", name)
+        get_conn.close()
+        print("Name added:", name)
         return redirect(url_for('home'))
     else:
         # Render the form page if the request method is GET
@@ -36,16 +35,15 @@ def add_user():
 def delete_user():
     if request.method == 'POST':
         # Extract form data
-        cursor= connection.cursor()
+        cursor= get_conn.cursor()
         name = request.form['name']
         sql="DELETE FROM Users WHERE user_id = %s"
         cursor.execute(sql,(user_id,))
-        connection.commit
+        get_conn.commit
         cursor.close()
-        print("Name to delete:", name)
+        get_conn.close()
         
-        flash('User deleted successfully! Hoorah!', 'warning') 
-        # Redirect to home page or another page upon successful submission
+        flash('User deleted successfully!') 
         return redirect(url_for('home'))
     else:
         # Render the form page if the request method is GET
