@@ -39,12 +39,12 @@ table {
 
 table tbody tr:nth-of-type(odd) {
     background-color:white !important; 
-    color: lightblue !important;
+    color: rgb(110, 200, 231) !important;
     text-align: center;
 }
 table tbody tr:nth-of-type(even) {
    background-color: #f4daf4 !important; 
-   color:white !important;
+   color:#ffffff !important;
 }
 
 .Name{
