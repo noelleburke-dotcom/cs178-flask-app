@@ -50,7 +50,7 @@ def delete_user():
         return render_template('delete_user.html')
 
 
-@app.route('/display-users')
+@app.route('/display-users',strict_slashes=False)
 def display_users():
     rows = execute_query("SELECT user_id, name FROM `User`;")
     users_list = [{'user_id': row['user_id'], 'name': row['name']} for row in rows]
