@@ -95,9 +95,9 @@ def update_playlist(user_id):
         song_id = request.form.get('song_id')
         conn = get_conn()
         cursor = conn.cursor()
-    if action == 'add': #add here
+        if action == 'add': #add here
        
-        cursor.execute("""
+            cursor.execute("""
             INSERT INTO PlaylistSong (playlist_id, song_id, position)
             SELECT playlist_id, %s, IFNULL(MAX(position)+1,1)
             FROM Playlist
@@ -133,7 +133,7 @@ def update_playlist(user_id):
         ORDER BY Song.title
     """)
 
-    return render_template('update_users.html', user=user, playlist=playlist, all_songs=all_songs)
+    return render_template('update_user.html', user=user, playlist=playlist, all_songs=all_songs)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
