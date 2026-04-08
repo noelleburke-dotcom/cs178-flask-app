@@ -78,14 +78,12 @@ def user_playlist(user_id):
     return render_template('user_playlist.html', user_name=user_name, playlist=playlist) 
     
 
-@app.route('/update-user/<int:user_id>')
-def update_user(user_id):
-    rows = execute_query("SELECT user_id, name FROM User WHERE user_id = %s", (user_id,))
-    if not rows:
-        return "User not found", 404
+@app.route('/update-user/')
+def update_user():
+    rows = execute_query("SELECT user_id, name FROM `User`;")
+    users_list = [{'user_id': row['user_id'], 'name': row['name']} for row in rows]
 
-    user = rows[0]  
-    return render_template('update_user.html', user=user)
+    return render_template('update_user.html', users=users_list)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
