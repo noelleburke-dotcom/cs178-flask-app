@@ -78,7 +78,7 @@ def user_playlist(user_id):
     return render_template('user_playlist.html', user_name=user_name, playlist=playlist) 
     
 
-@app.route('/update-user/')
+@app.route('/update-user')
 def update_user():
     rows = execute_query("SELECT user_id, name FROM `User`;")
     users_list = [{'user_id': row['user_id'], 'name': row['name']} for row in rows]
