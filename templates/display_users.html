@@ -17,9 +17,9 @@
             {% for user in users %}
             <tr>
                 <td>
-                    <a href="{{ url_for('display_users', user_id=user['user_id']) }}" style="color: inherit; text-decoration: none;">
-                        {{ user['name'] }}
-                    </a>
+                <a href="{{ url_for('user_playlist', user_id=user['user_id']) }}">
+                {{ user['name'] }}
+            </a>
                 </td>
             </tr>
             {% endfor %}
