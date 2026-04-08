@@ -80,7 +80,7 @@ def user_playlist(user_id):
     return render_template('user_playlist.html', user_name=user_name, playlist=playlist) 
     
 
-@app.route('/update-user')
+@app.route('/update-user', strict_slashes=False)
 def update_user():
     rows = execute_query("SELECT user_id, name FROM `User`;")
     users_list = [{'user_id': row['user_id'], 'name': row['name']} for row in rows]
@@ -133,7 +133,7 @@ def update_playlist(user_id):
         ORDER BY Song.title
     """)
 
-    return render_template('update_playlist.html', user=user, playlist=playlist, all_songs=all_songs)
+    return render_template('update_user.html', user=user, playlist=playlist, all_songs=all_songs)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
