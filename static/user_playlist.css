@@ -55,7 +55,7 @@ td {
     font-weight: bold;
 }
 
-btn{
+btn {
     display:block;
     width:250px;
     padding: 15px 30px;         
@@ -66,6 +66,12 @@ btn{
     border-radius: 12px;
     font-weight: bold;
     font-size: 20px;
+}
+
+th {
+    color:hsl(328, 100%, 54%);
+    font-size: 45px;
+    text-align: center;
 }
 /*.textbox{
     display: block;        
