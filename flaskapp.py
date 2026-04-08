@@ -58,14 +58,24 @@ def display_users():
 
 @app.route('/user/<int:user_id>/playlist')
 def user_playlist(user_id):
-    user_info = execute_query("SELECT name FROM `User` WHERE user_id=%s", (user_id,))
+    user_info = execute_query("SELECT name FROM User WHERE user_id=%s", (user_id,))
     if not user_info:
         return "User not found", 404
-    user_name = user_info[0]['name']  
-    playlist_rows = execute_query("SELECT song_name FROM Playlist WHERE user_id=%s", (user_id,))
-    playlist = [row['song_name'] for row in playlist_rows]
 
-    return render_template('user_playlist.html', user_name=user_name, playlist=playlist)    
+    user_name = user_info[0]['name'] 
+
+    playlist_rows = execute_query("""
+        SELECT Song.title, Artist.name AS artist
+        FROM Playlist
+        JOIN PlaylistSong ON Playlist.playlist_id = PlaylistSong.playlist_id
+        JOIN Song ON PlaylistSong.song_id = Song.song_id
+        JOIN Artist ON Song.artist_id = Artist.artist_id
+        WHERE Playlist.user_id = %s
+        ORDER BY PlaylistSong.position
+    """, (user_id,))
+
+    playlist = [(row['title'], row['artist']) for row in playlist_rows]
+    return render_template('user_playlist.html', user_name=user_name, playlist=playlist) 
 
 
 @app.route('/update-user/<int:user_id>')
