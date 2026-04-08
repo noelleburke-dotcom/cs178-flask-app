@@ -2,31 +2,31 @@
 <html lang="en">
 <head>
     <title>Users List</title>
-    <!-- Bootstrap CSS for styling the table -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ url_for('static', filename='update_users.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='update_users.css') }}">
 </head>
 <body>
     <div class="container">
         <h2>Users List</h2>
         <table class="table table-bordered table-striped mt-3">
+            <thead>
                 <tr>
                     <th class="Name">Name</th>
                 </tr>
             </thead>
-            <tbody> <!-- table body -- loop through all of the users -->
-
-                    {% for user in users %}
-                    <tr>
-                   <td>
-                      <a href="{{ url_for('update_playlist', user_id=user['user_id']) }}">
-                         {{ user['name'] }}
-                    </a>
-                </td>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('update_playlist', user_id=user['user_id']) }}">
+                            {{ user['name'] }}
+                        </a>
+                    </td>
                 </tr>
-                 {% endfor %}
+                {% endfor %}
             </tbody>
         </table>
     </div>
- </body>
+</body>
 </html>
