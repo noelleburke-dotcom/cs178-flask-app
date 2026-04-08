@@ -7,26 +7,54 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='update_playlist.css') }}">
 </head>
 <body>
-<div class="container">
-    <h2>{{ username }}'s Playlist</h2>
+<div class="container mt-4">
+    <h2>Updating {{ username }}'s Playlist</h2>
 
-    <table class="table table-bordered table-striped mt-3">
-        <thead>
-            <tr>
-                <th>Track Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for track in tracks %}
-            <tr>
-                <td>{{ track[0] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-            </tbody>
-        </table>
+    <div class="row">
+        <!-- Left: Playlist -->
+        <div class="col-md-6">
+            <h3>Current Playlist</h3>
+            <ul class="list-group">
+                {% for song in playlist %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ song.title }} - {{ song.artist }} ({{ song.duration }})
+                    <form method="POST" style="margin:0;">
+                        <input type="hidden" name="title" value="{{ song.title }}">
+                        <input type="hidden" name="action" value="delete">
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Right: Add/Delete Forms -->
+        <div class="col-md-6">
+            <h3>Add a Song</h3>
+            <form method="POST">
+                <input type="hidden" name="action" value="add">
+                <div class="mb-2">
+                    <input type="text" name="title" placeholder="Song Title" class="form-control" required>
+                </div>
+                <div class="mb-2">
+                    <input type="text" name="artist" placeholder="Artist Name" class="form-control" required>
+                </div>
+                <div class="mb-2">
+                    <input type="text" name="duration" placeholder="Duration (mm:ss)" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Song</button>
+            </form>
+
+            <hr>
+
+            <h3>Delete a Song</h3>
+            <form method="POST">
+                <input type="hidden" name="action" value="delete">
+                <div class="mb-2">
+                    <input type="text" name="title" placeholder="Song Title to Delete" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-danger">Delete Song</button>
+            </form>
+        </div>
     </div>
- </body>
-</html>
+</div>
