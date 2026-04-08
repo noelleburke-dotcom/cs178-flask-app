@@ -58,6 +58,7 @@ def display_users():
     return render_template('display_users.html', users=users_list)
 
 @app.route('/user/<int:user_id>/playlist')
+@app.route('/update-user/<int:user_id>/')
 def user_playlist(user_id):
     user_info = execute_query("SELECT name FROM User WHERE user_id=%s", (user_id,))
     if not user_info:
