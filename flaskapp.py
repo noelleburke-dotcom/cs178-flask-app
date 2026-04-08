@@ -85,6 +85,13 @@ def update_user():
 
     return render_template('update_user.html', users=users_list)
 
+@app.route('/update-user/<int:user_id>', methods=['GET', 'POST'])
+def update_playlist(user_id):
+    user= execute_query(f"SELECT * FROM `User` WHERE user_id = {user_id};")[0]
+
+
+    return render_template('edit_user.html', user=user)
+
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
