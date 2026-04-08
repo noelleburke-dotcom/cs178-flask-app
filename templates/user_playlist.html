@@ -8,22 +8,25 @@
 </head>
 <body>
 <div class="container">
-    <h2>{{ username }}'s Playlist</h2>
+    <h2>{{ user_name }}'s Playlist</h2>
 
     <table class="table table-bordered table-striped mt-3">
         <thead>
             <tr>
                 <th>Track Name</th>
+                <th>Artist</th>
             </tr>
         </thead>
         <tbody>
             {% for track in tracks %}
             <tr>
-                <td>{{ track[0] }}</td>
+                <td>{{ song }}</td>
+                <td>{{artist}}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <a href="{{ url_for('display_users') }}" class="btn btn-primary mt-3">Back to Users</a>
 </div>
             </tbody>
         </table>
