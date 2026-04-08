@@ -75,8 +75,9 @@ def user_playlist(user_id):
     """, (user_id,))
 
     playlist = [(row['title'], row['artist']) for row in playlist_rows]
+    print(playlist_rows)
     return render_template('user_playlist.html', user_name=user_name, playlist=playlist) 
-
+    
 
 @app.route('/update-user/<int:user_id>')
 def update_user(user_id):
