@@ -104,8 +104,8 @@ def update_playlist(user_id):
             WHERE user_id=%s
             """, (song_id, user_id))
         
-    elif action == 'delete': #delete here
-        cursor.execute("""
+        elif action == 'delete': #delete here
+            cursor.execute("""
             DELETE FROM PlaylistSong
             WHERE playlist_id = (SELECT playlist_id FROM Playlist WHERE user_id=%s)
             AND song_id = %s
