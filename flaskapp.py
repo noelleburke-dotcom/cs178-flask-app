@@ -88,11 +88,7 @@ def update_user():
 
 @app.route('/update-user/<int:user_id>/edit/', methods=['GET', 'POST'])
 def update_playlist(user_id):
-    user_rows = execute_query("SELECT * FROM `User` WHERE user_id = %s;", (user_id,))
-    if not user_rows:
-        return "User not found", 404
-
-    user = user_rows[0]
+    user = execute_query(f"SELECT * FROM `User` WHERE user_id = {user_id};")[0]
 
     if request.method == 'POST':
         action = request.form.get('action')
