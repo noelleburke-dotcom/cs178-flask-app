@@ -114,16 +114,16 @@ def update_playlist(user_id):
         conn.close()
 #update here 
     playlist_rows = execute_query("""
-        SELECT Song.song_id, Song.title, Artist.name AS artist
+        SELECT Song.song_id, Song.title, Artist.name AS artist, Song.length_seconds
         FROM Playlist
         JOIN PlaylistSong ON Playlist.playlist_id = PlaylistSong.playlist_id
         JOIN Song ON PlaylistSong.song_id = Song.song_id
         JOIN Artist ON Song.artist_id = Artist.artist_id
         WHERE Playlist.user_id = %s
         ORDER BY PlaylistSong.position
-    """, (user_id,))
+        """, (user_id,))
 
-    playlist = [{'song_id': r['song_id'], 'title': r['title'], 'artist': r['artist']} for r in playlist_rows]
+    playlist = [{'song_id': r['song_id'], 'title': r['title'], 'artist': r['artist'], 'duration': r['length_seconds']} for r in playlist_rows]
 #show all here
     all_songs = execute_query("""
         SELECT Song.song_id, Song.title, Artist.name AS artist
