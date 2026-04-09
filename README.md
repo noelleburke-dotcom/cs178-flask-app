@@ -123,10 +123,26 @@ Artist holds the list of artists in the playlist. Playlist holds the songs and t
 
 **Example:**
 
-- `[TableName]` — stores [description]; primary key is `[key]`
-- `[TableName]` — stores [description]; foreign key links to `[other table]`
+- `[Artist]` — stores artist and the name; primary key is `artist_id`
+- `[Playlist]` — stores songs and the names; primary key is `playlist_id`
+- `[PlaylistSong]` — stores all songs in playlist; primary key is `playlist_id` and `song_id`  foreign key links Playlist to Song
+- `[Song]` — stores song_id, title, length of the song, and artist_id; foreign key is `artist_id`
+- `[User]` — stores user_id; primary key is `user_id`
+
 
 The JOIN query used in this project: <!-- describe it in plain English -->
+There are lots of joins an example is this:
+playlist_rows = execute_query("""
+        SELECT Song.song_id, Song.title, Artist.name AS artist, Song.length_seconds
+        FROM Playlist
+        JOIN PlaylistSong ON Playlist.playlist_id = PlaylistSong.playlist_id
+        JOIN Song ON PlaylistSong.song_id = Song.song_id
+        JOIN Artist ON Song.artist_id = Artist.artist_id
+        WHERE Playlist.user_id = %s
+        ORDER BY PlaylistSong.position
+    """, (user_id,))
+this block of code displays the playlist for a certain user. Starting from Playlist, PlaylistSong is joined to get the different ids. From PlaylistSong Song is joined to get the song_id. Then from Song to Artist to get the artist_id. 
+
 
 I did not use a DynamoDB table. The data was stored in the RDS tables.
 
@@ -134,10 +150,10 @@ I did not use a DynamoDB table. The data was stored in the RDS tables.
 
 | Operation | Route      | Description    |
 | --------- | ---------- | -------------- |
-| Create    | `/[route]` | [what it does] |
-| Read      | `/[route]` | [what it does] |
-| Update    | `/[route]` | [what it does] |
-| Delete    | `/[route]` | [what it does] |
+| Create    | `/@app.route('/add-user', methods=['GET', 'POST'])` | adds a user to the table |
+| Read      | `/@app.route('/display-users')` | displays the user's playlist |
+| Update    | `/@app.route('/update-user/')` | adds or deletes the user's playlist |
+| Delete    | `/@app.route('/delete-user',methods=['GET', 'POST'])` | deletes a user from the table |
 
 ---
 
