@@ -87,7 +87,7 @@ def update_user():
 
     return render_template('update_user.html', users=users_list)
 
-@app.route('/update-user/<int:user_id>', methods=['GET', 'POST'])
+@app.route('/update-user/<int:user_id>/edit', methods=['GET', 'POST'])
 def update_playlist(user_id):
     user= execute_query(f"SELECT * FROM `User` WHERE user_id = {user_id};")[0]
     if request.method == 'POST':
