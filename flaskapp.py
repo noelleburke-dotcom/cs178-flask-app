@@ -132,7 +132,7 @@ def update_playlist(user_id):
         ORDER BY Song.title
     """)
 
-    return render_template('update_user.html', user=user, playlist=playlist, all_songs=all_songs)
+    return render_template('update_playlist.html', user=user, playlist=playlist, all_songs=all_songs)
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
