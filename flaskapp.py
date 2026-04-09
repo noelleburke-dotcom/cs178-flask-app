@@ -115,7 +115,7 @@ def update_playlist(user_id):
         cursor.close()
         conn.close()
 #update here 
-        playlist_rows = execute_query("""
+    playlist_rows = execute_query("""
         SELECT Song.song_id, Song.title, Artist.name AS artist
         FROM Playlist
         JOIN PlaylistSong ON Playlist.playlist_id = PlaylistSong.playlist_id
