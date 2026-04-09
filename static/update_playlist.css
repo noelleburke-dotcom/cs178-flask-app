@@ -21,6 +21,26 @@ h2{
     text-align: center;
 }
 
+h3{
+    color:hsl(328, 100%, 54%);
+    font-size: 40px;
+    text-align: center;
+}
+
+.btn-primary{
+    background-color: plum;
+    color:white;
+}
+
+.btn-danger{
+    background-color: plum;
+    color: white;
+}
+
+.list-group-item{
+    color:hsl(328, 100%, 54%)
+}
+
 thead {
     background-color:#f4daf4!important;
     color: white !important;
