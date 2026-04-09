@@ -49,9 +49,7 @@ def delete_user():
         # Render the form page if the request method is GET
         return render_template('delete_user.html')
 
-
 @app.route('/display-users')
-#@app.route('/update-user/')
 def display_users():
     rows = execute_query("SELECT user_id, name FROM `User`;")
     users_list = [{'user_id': row['user_id'], 'name': row['name']} for row in rows]
@@ -77,7 +75,7 @@ def user_playlist(user_id):
 
     playlist = [(row['title'], row['artist']) for row in playlist_rows]
     return render_template('user_playlist.html', user_name=user_name, playlist=playlist) 
-    
+
 
 @app.route('/update-user')
 def update_user():
@@ -88,11 +86,7 @@ def update_user():
 
 @app.route('/update-user/<int:user_id>/edit/', methods=['GET', 'POST'])
 def update_playlist(user_id):
-    user_rows = execute_query("SELECT * FROM `User` WHERE user_id = %s;", (user_id,))
-    if not user_rows:
-        return "User not found", 404
-
-    user = user_rows[0]
+    user = execute_query(f"SELECT * FROM `User` WHERE user_id = {user_id};")[0]
 
     if request.method == 'POST':
         action = request.form.get('action')
@@ -105,7 +99,7 @@ def update_playlist(user_id):
             artist = request.form['artist']
             duration = request.form['duration']
 
-            
+
             cursor.execute("""
                 SELECT song_id FROM Song
                 JOIN Artist ON Song.artist_id = Artist.artist_id
@@ -116,7 +110,7 @@ def update_playlist(user_id):
             if result:
                 song_id = result[0]
             else:
-                
+
                 cursor.execute("SELECT artist_id FROM Artist WHERE name=%s", (artist,))
                 artist_row = cursor.fetchone()
                 if artist_row:
@@ -125,13 +119,13 @@ def update_playlist(user_id):
                     cursor.execute("INSERT INTO Artist (name) VALUES (%s)", (artist,))
                     artist_id = cursor.lastrowid
 
-             
+
                 cursor.execute("""
                     INSERT INTO Song (title, artist_id, length_seconds) VALUES (%s, %s, %s)
                 """, (title, artist_id, duration))
                 song_id = cursor.lastrowid
 
-            
+
             cursor.execute("""
                 INSERT INTO PlaylistSong (playlist_id, song_id, position)
                 SELECT playlist_id, %s, IFNULL(MAX(position)+1,1)
