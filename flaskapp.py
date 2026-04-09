@@ -88,31 +88,72 @@ def update_user():
 
 @app.route('/update-user/<int:user_id>/edit/', methods=['GET', 'POST'])
 def update_playlist(user_id):
-    user= execute_query(f"SELECT * FROM `User` WHERE user_id = {user_id};")[0]
+    user = execute_query(f"SELECT * FROM `User` WHERE user_id = {user_id};")[0]
+
     if request.method == 'POST':
         action = request.form.get('action')
-        song_id = request.form.get('song_id')
+
         conn = get_conn()
         cursor = conn.cursor()
-        if action == 'add': #add here
+
+        if action == 'add':
+            title = request.form['title']
+            artist = request.form['artist']
+            duration = request.form['duration']
+
+            
             cursor.execute("""
-            INSERT INTO PlaylistSong (playlist_id, song_id, position)
-            SELECT playlist_id, %s, IFNULL(MAX(position)+1,1)
-            FROM Playlist
-            WHERE user_id=%s
+                SELECT song_id FROM Song
+                JOIN Artist ON Song.artist_id = Artist.artist_id
+                WHERE Song.title=%s AND Artist.name=%s
+            """, (title, artist))
+            result = cursor.fetchone()
+
+            if result:
+                song_id = result[0]
+            else:
+                
+                cursor.execute("SELECT artist_id FROM Artist WHERE name=%s", (artist,))
+                artist_row = cursor.fetchone()
+                if artist_row:
+                    artist_id = artist_row[0]
+                else:
+                    cursor.execute("INSERT INTO Artist (name) VALUES (%s)", (artist,))
+                    artist_id = cursor.lastrowid
+
+             
+                cursor.execute("""
+                    INSERT INTO Song (title, artist_id, length_seconds) VALUES (%s, %s, %s)
+                """, (title, artist_id, duration))
+                song_id = cursor.lastrowid
+
+            
+            cursor.execute("""
+                INSERT INTO PlaylistSong (playlist_id, song_id, position)
+                SELECT playlist_id, %s, IFNULL(MAX(position)+1,1)
+                FROM Playlist
+                WHERE user_id=%s
             """, (song_id, user_id))
-        
-        elif action == 'delete': #delete here
-            cursor.execute("""
-            DELETE FROM PlaylistSong
-            WHERE playlist_id = (SELECT playlist_id FROM Playlist WHERE user_id=%s)
-            AND song_id = %s
-            """, (user_id, song_id))
-        
+
+        elif action == 'delete':
+            title = request.form['title']
+
+            # get song_id
+            cursor.execute("SELECT song_id FROM Song WHERE title=%s", (title,))
+            row = cursor.fetchone()
+            if row:
+                song_id = row[0]
+                cursor.execute("""
+                    DELETE FROM PlaylistSong
+                    WHERE playlist_id = (SELECT playlist_id FROM Playlist WHERE user_id=%s)
+                    AND song_id=%s
+                """, (user_id, song_id))
+
         conn.commit()
         cursor.close()
         conn.close()
-#update here 
+
+    # fetch playlist
     playlist_rows = execute_query("""
         SELECT Song.song_id, Song.title, Artist.name AS artist, Song.length_seconds
         FROM Playlist
@@ -121,18 +162,14 @@ def update_playlist(user_id):
         JOIN Artist ON Song.artist_id = Artist.artist_id
         WHERE Playlist.user_id = %s
         ORDER BY PlaylistSong.position
-        """, (user_id,))
+    """, (user_id,))
 
     playlist = [{'song_id': r['song_id'], 'title': r['title'], 'artist': r['artist'], 'duration': r['length_seconds']} for r in playlist_rows]
-#show all here
-    all_songs = execute_query("""
-        SELECT Song.song_id, Song.title, Artist.name AS artist, Song.length_seconds AS duration
-        FROM Song
-        JOIN Artist ON Song.artist_id = Artist.artist_id
-        ORDER BY Song.title
-    """)
 
-    return render_template('update_playlist.html', user=user, playlist=playlist, all_songs=all_songs)
+    return render_template('update_playlist.html', user=user, playlist=playlist)
+
+
+
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
