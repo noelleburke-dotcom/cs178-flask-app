@@ -96,7 +96,6 @@ def update_playlist(user_id):
         conn = get_conn()
         cursor = conn.cursor()
         if action == 'add': #add here
-       
             cursor.execute("""
             INSERT INTO PlaylistSong (playlist_id, song_id, position)
             SELECT playlist_id, %s, IFNULL(MAX(position)+1,1)
@@ -124,6 +123,7 @@ def update_playlist(user_id):
         WHERE Playlist.user_id = %s
         ORDER BY PlaylistSong.position
     """, (user_id,))
+
     playlist = [{'song_id': r['song_id'], 'title': r['title'], 'artist': r['artist']} for r in playlist_rows]
 #show all here
     all_songs = execute_query("""
