@@ -30,11 +30,13 @@ h3{
 .btn-primary{
     background-color: plum;
     color:white;
+    border-color:plum;
 }
 
 .btn-danger{
     background-color: plum;
     color: white;
+    border-color: plum;
 }
 
 .list-group-item{
